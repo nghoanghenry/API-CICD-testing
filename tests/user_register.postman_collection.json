@@ -1,50 +1,40 @@
 {
-	"info": {
-		"_postman_id": "dfaeb5ec-1b4d-44f7-be87-c427589524c7",
-		"name": "New Collection",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "36640299"
-	},
-	"item": [
-		{
-			"name": "New Folder",
-			"item": [
-				{
-					"name": "User Registration",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"first_name\": \"{{first_name}}\",\r\n  \"last_name\": \"{{last_name}}\",\r\n  \"address\": \"{{address}}\",\r\n  \"city\": \"{{city}}\",\r\n  \"state\": \"{{state}}\",\r\n  \"country\": \"{{country}}\",\r\n  \"postcode\": \"{{postcode}}\",\r\n  \"phone\": \"{{phone}}\",\r\n  \"dob\": \"{{dob}}\",\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\"\r\n}\r\n\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8091/users/register",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8091",
-							"path": [
-								"users",
-								"register"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		}
-	]
+  "info": {
+    "name": "User Registration API",
+    "_postman_id": "12345-6789",
+    "description": "Test user registration API with Newman and CI/CD",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"first_name\": \"David\",\n  \"last_name\": \"Smith\",\n  \"address\": \"123 Main St\",\n  \"city\": \"London\",\n  \"state\": \"England\",\n  \"country\": \"UK\",\n  \"postcode\": \"E1 6AN\",\n  \"phone\": \"123456789\",\n  \"dob\": \"1990-01-01\",\n  \"email\": \"david.smith@test.com\",\n  \"password\": \"Passw0rd!\"\n}"
+        },
+        "url": {
+          "raw": "https://api-with-bugs.practicesoftwaretesting.com/users/register",
+          "protocol": "https",
+          "host": [
+            "api-with-bugs",
+            "practicesoftwaretesting",
+            "com"
+          ],
+          "path": [
+            "users",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
 }

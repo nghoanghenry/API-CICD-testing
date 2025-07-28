@@ -23,4 +23,4 @@ jobs:
         run: npm install -g newman
 
       - name: Run Postman Tests
-        run: newman run tests/user_register.postman_collection.json
+        run: newman run tests/user_register.postman_collection.json --delay-request 1000
