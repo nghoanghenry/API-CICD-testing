@@ -22,5 +22,20 @@ jobs:
       - name: Install Newman
         run: npm install -g newman
 
-      - name: Run Postman Tests
-        run: newman run tests/user_register.postman_collection.json --delay-request 1000
+      - name: Run Register Users API Tests
+        run: newman run RegisterUsers_API_Tests.postman_collection.json --delay-request 1000 --reporters cli,junit --reporter-junit-export junit-report-registerusers.xml
+
+      - name: Run Get User API Tests
+        run: newman run GetUsers_API_Tests.postman_collection.json --delay-request 1000 --reporters cli,junit --reporter-junit-export junit-report-getusers.xml
+
+      - name: Run Update User API Tests
+        run: newman run UpdateUser_API_Tests.postman_collection.json --delay-request 1000 --reporters cli,junit --reporter-junit-export junit-report-updateuser.xml
+
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-reports
+          path: |
+            junit-report-registerusers.xml
+            junit-report-getusers.xml
+            junit-report-updateuser.xml

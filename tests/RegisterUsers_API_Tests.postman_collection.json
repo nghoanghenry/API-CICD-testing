@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "dfaeb5ec-1b4d-44f7-be87-c427589524c7",
+		"name": "RegisterUsers_API_Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36640299"
+	},
+	"item": [
+		{
+			"name": "Register New User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"first_name\": \"{{first_name}}\",\r\n  \"last_name\": \"{{last_name}}\",\r\n  \"address\": \"{{address}}\",\r\n  \"city\": \"{{city}}\",\r\n  \"state\": \"{{state}}\",\r\n  \"country\": \"{{country}}\",\r\n  \"postcode\": \"{{postcode}}\",\r\n  \"phone\": \"{{phone}}\",\r\n  \"dob\": \"{{dob}}\",\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-with-bugs.practicesoftwaretesting.com/users/register",
+					"protocol": "https",
+					"host": [
+						"api-with-bugs",
+						"practicesoftwaretesting",
+						"com"
+					],
+					"path": [
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

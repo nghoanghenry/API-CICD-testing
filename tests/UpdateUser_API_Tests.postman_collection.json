@@ -1,0 +1,324 @@
+{
+	"info": {
+		"_postman_id": "ea5d84cb-54c3-438f-a260-880b8f2ca77a",
+		"name": "UpdateUser_API_Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36640299"
+	},
+	"item": [
+		{
+			"name": "UpdateUser-TC01 - Update user valid info",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{user_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"first_name\": \"David\", \"email\": \"new@mail.com\"}"
+				},
+				"url": {
+					"raw": "https://api-with-bugs.practicesoftwaretesting.com/user/{{userId}}",
+					"protocol": "https",
+					"host": [
+						"api-with-bugs",
+						"practicesoftwaretesting",
+						"com"
+					],
+					"path": [
+						"user",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser-TC02 - Update only email field",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{user_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\": \"abc@mail.com\"}"
+				},
+				"url": {
+					"raw": "https://api-with-bugs.practicesoftwaretesting.com/user/{{userId}}",
+					"protocol": "https",
+					"host": [
+						"api-with-bugs",
+						"practicesoftwaretesting",
+						"com"
+					],
+					"path": [
+						"user",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser-TC03 - Update non-existing user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{user_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"first_name\": \"Test\"}"
+				},
+				"url": {
+					"raw": "https://api-with-bugs.practicesoftwaretesting.com/user/999",
+					"protocol": "https",
+					"host": [
+						"api-with-bugs",
+						"practicesoftwaretesting",
+						"com"
+					],
+					"path": [
+						"user",
+						"999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser-TC04 - Update user with empty body",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"url": {
+					"raw": "https://api-with-bugs.practicesoftwaretesting.com/user/{{userId}}?Authorization=Bearer {{user_token}}",
+					"protocol": "https",
+					"host": [
+						"api-with-bugs",
+						"practicesoftwaretesting",
+						"com"
+					],
+					"path": [
+						"user",
+						"{{userId}}"
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "Bearer {{user_token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser-TC05 - Update without token",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"first_name\": \"John\"}"
+				},
+				"url": {
+					"raw": "https://api-with-bugs.practicesoftwaretesting.com/user/{{userId}}",
+					"protocol": "https",
+					"host": [
+						"api-with-bugs",
+						"practicesoftwaretesting",
+						"com"
+					],
+					"path": [
+						"user",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser-TC06 - Update with another user's token",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer INVALID_TOKEN"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"first_name\": \"Hacker\"}"
+				},
+				"url": {
+					"raw": "https://api-with-bugs.practicesoftwaretesting.com/user/{{userId}}",
+					"protocol": "https",
+					"host": [
+						"api-with-bugs",
+						"practicesoftwaretesting",
+						"com"
+					],
+					"path": [
+						"user",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser-TC07 - Update with invalid email format",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\": \"abc\"}"
+				},
+				"url": {
+					"raw": "https://api-with-bugs.practicesoftwaretesting.com/user/{{userId}}?Authorization=Bearer {{user_token}}",
+					"protocol": "https",
+					"host": [
+						"api-with-bugs",
+						"practicesoftwaretesting",
+						"com"
+					],
+					"path": [
+						"user",
+						"{{userId}}"
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "Bearer {{user_token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser-TC08 - Update with very long first name (255 chars)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"first_name\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+				},
+				"url": {
+					"raw": "https://api-with-bugs.practicesoftwaretesting.com/user/{{userId}}?Authorization=Bearer {{user_token}}",
+					"protocol": "https",
+					"host": [
+						"api-with-bugs",
+						"practicesoftwaretesting",
+						"com"
+					],
+					"path": [
+						"user",
+						"{{userId}}"
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "Bearer {{user_token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "{{userId}}",
+			"value": "17",
+			"type": "string"
+		},
+		{
+			"key": "{{user_token}}",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS13aXRoLWJ1Z3MucHJhY3RpY2Vzb2Z0d2FyZXRlc3RpbmcuY29tL3VzZXJzL2xvZ2luIiwiaWF0IjoxNzU0MTQzODQzLCJleHAiOjE3Njk3NDM4NDMsIm5iZiI6MTc1NDE0Mzg0MywianRpIjoiYVZZaUxzVWx3T3g1QmE0RiIsInN1YiI6IjE3IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyIsInJvbGUiOiJ1c2VyIn0.bms4qmXwB1M_RhdcJHE49_K1A4lZuCcWSRuMnvX6Sr8",
+			"type": "string"
+		}
+	]
+}
