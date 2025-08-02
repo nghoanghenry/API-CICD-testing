@@ -23,13 +23,13 @@ jobs:
         run: npm install -g newman
 
       - name: Run Register Users API Tests
-        run: newman run RegisterUsers_API_Tests.postman_collection.json --delay-request 1000 --reporters cli,junit --reporter-junit-export junit-report-registerusers.xml
+        run: newman run tests/RegisterUsers_API_Tests.postman_collection.json --delay-request 1000 --reporters cli,junit --reporter-junit-export junit-report-registerusers.xml
 
       - name: Run Get User API Tests
-        run: newman run GetUsers_API_Tests.postman_collection.json --delay-request 1000 --reporters cli,junit --reporter-junit-export junit-report-getusers.xml
+        run: newman run tests/GetUsers_API_Tests.postman_collection.json --delay-request 1000 --reporters cli,junit --reporter-junit-export junit-report-getusers.xml
 
       - name: Run Update User API Tests
-        run: newman run UpdateUser_API_Tests.postman_collection.json --delay-request 1000 --reporters cli,junit --reporter-junit-export junit-report-updateuser.xml
+        run: newman run tests/UpdateUser_API_Tests.postman_collection.json --delay-request 1000 --reporters cli,junit --reporter-junit-export junit-report-updateuser.xml
 
       - name: Upload Test Results
         uses: actions/upload-artifact@v4
