@@ -12,12 +12,12 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: "16"
+          node-version: "18"
 
       - name: Install Newman
         run: npm install -g newman
@@ -32,7 +32,8 @@ jobs:
         run: newman run UpdateUser_API_Tests.postman_collection.json --delay-request 1000 --reporters cli,junit --reporter-junit-export junit-report-updateuser.xml
 
       - name: Upload Test Results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: test-reports
           path: |
